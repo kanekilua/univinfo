@@ -1,3 +1,5 @@
+package com.kane.univInfo.service;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -8,13 +10,14 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * @date:2018/6/8
  * @description:
  **/
-public class FirstProcessor implements PageProcessor {
+public class UnivInfoProcessor implements PageProcessor {
     // 抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
     private static int count =0;
 
 
     public void process(Page page) {
+        // 抓取学校的名字
         System.out.println(page.getHtml());
 //        //判断链接是否符合http://www.cnblogs.com/任意个数字字母-/p/7个数字.html格式
 //        if(!page.getUrl().regex("http://www.cnblogs.com/[a-z 0-9 -]+/p/[0-9]{7}.html").match()){
@@ -28,7 +31,7 @@ public class FirstProcessor implements PageProcessor {
 //            );
 //            count ++;
 //        }
-}
+    }
 
     public Site getSite() {
         return site;
@@ -38,7 +41,7 @@ public class FirstProcessor implements PageProcessor {
         long startTime, endTime;
         System.out.println("开始爬取...");
         startTime = System.currentTimeMillis();
-        Spider.create(new FirstProcessor()).addUrl("https://gkcx.eol.cn/schoolhtm/specialty/105/10035/specialtyScoreDetail_2017_10011.htm").thread(5).run();
+        Spider.create(new UnivInfoProcessor()).addUrl("https://gkcx.eol.cn/soudaxue/queryschool.html").thread(5).run();
         endTime = System.currentTimeMillis();
         System.out.println("爬取结束，耗时约" + ((endTime - startTime) / 1000) + "秒，抓取了"+count+"条记  录");
     }

@@ -1,3 +1,5 @@
+package com.kane.univInfo.service;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -8,7 +10,7 @@ import us.codecraft.webmagic.processor.PageProcessor;
  * @date:2018/6/8
  * @description:
  **/
-public class UnivInfoProcessor implements PageProcessor {
+public class FirstProcessor implements PageProcessor {
     // 抓取网站的相关配置，包括编码、抓取间隔、重试次数等
     private Site site = Site.me().setRetryTimes(3).setSleepTime(100);
     private static int count =0;
@@ -28,7 +30,7 @@ public class UnivInfoProcessor implements PageProcessor {
 //            );
 //            count ++;
 //        }
-    }
+}
 
     public Site getSite() {
         return site;
